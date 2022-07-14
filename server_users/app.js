@@ -6,8 +6,8 @@ const app = express();
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
 const logoutRouter = require('./routes/logoutRouter');
-const userRouter = require('./routes/userRouter')
-const authRouter = require('./routes/authRouter')
+const userRouter = require('./routes/userRouter');
+const authRouter = require('./routes/authRouter');
 
 const PORT = process.env.PORT ?? 3001;
 
