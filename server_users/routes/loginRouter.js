@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { addToken } = require('../tokens/tokens');
 const { users } = require('../db/models');
 require("dotenv").config();
 
@@ -20,7 +21,7 @@ router.route('/')
       /* check if password is correct */
       const validationPass = await bcrypt.compare(pass, currentUser.pass);
       if (!validationPass) {
-        return res.status(401).json({error: "Password is incorrect"});  
+        return res.status(401).json({error: "Password is incorrect"}); 
       }
 
       /* create Access JWT */
@@ -32,7 +33,9 @@ router.route('/')
           expiresIn: process.env.JWT_LIFETIME,
         }
       );
-  
+
+      await addToken(accessToken);
+
       return res.json({
         accessToken,
       });

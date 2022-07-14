@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { addToken } = require('../tokens/tokens');
 const { users } = require('../db/models');
 require("dotenv").config();
 
@@ -31,6 +32,8 @@ router.route('/')
         }
       );
   
+      await addToken(accessToken);
+
       res.json({
         accessToken,
       });
