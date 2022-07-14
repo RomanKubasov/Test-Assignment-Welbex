@@ -9,9 +9,9 @@ const router = express.Router();
 router.route('/')
   .post(async (req, res) => {
     try {
-      let { login, pass } = req.body;
+      let { login, email, pass } = req.body;
       
-      /* check if user exists */
+      /* check if user exists (login must be unique, but different users may have the same email) */
       const currentUser = await users.findOne({ where: { login } });
       if (currentUser) {
         return res.status(200).json({error: "User with this login already exists"});
@@ -20,7 +20,7 @@ router.route('/')
       /* create new user */
       pass = await bcrypt.hash(pass, 10);
       const role_id = 2;
-      await users.create({ login, pass, role_id });
+      await users.create({ login, email, pass, role_id });
 
       /* create Access JWT */
       const accessToken = await jwt.sign(

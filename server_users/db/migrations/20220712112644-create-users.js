@@ -9,9 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       login: {
+        unique: true,
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      email: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       pass: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       role_id: {

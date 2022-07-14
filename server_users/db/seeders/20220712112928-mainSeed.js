@@ -7,8 +7,8 @@ module.exports = {
        {role: 'user', createdAt: new Date(), updatedAt: new Date()},
      ]);
      await queryInterface.bulkInsert('users', [
-      {login: 'ADMIN', pass: await bcrypt.hash('123',10), role_id: 1, createdAt: new Date(), updatedAt: new Date()},
-      {login: 'USER', pass: await bcrypt.hash('123',10), role_id: 2, createdAt: new Date(), updatedAt: new Date()},
+      {login: 'ADMIN', email: 'admin@admin.com', pass: await bcrypt.hash('123',10), role_id: 1, createdAt: new Date(), updatedAt: new Date()},
+      {login: 'USER', email: 'user@admin.com', pass: await bcrypt.hash('123',10), role_id: 2, createdAt: new Date(), updatedAt: new Date()},
     ]);
   },
 
