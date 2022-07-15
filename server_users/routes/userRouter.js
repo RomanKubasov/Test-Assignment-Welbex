@@ -51,7 +51,7 @@ router.route('/')
 
       /* may not remove ADMIN */
       if (JSON.parse(JSON.stringify(currentUser)).role_id === 1) {
-        return res.status(400).json({ error: "It's prohibited to remove Admin" });
+        return res.status(401).json({ error: "It's prohibited to remove Admin" });
       }
 
       /* delete user */

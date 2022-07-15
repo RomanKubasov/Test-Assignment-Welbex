@@ -15,7 +15,7 @@ router.route('/')
       /* check if user exists (login must be unique, but different users may have the same email) */
       const currentUser = await users.findOne({ where: { login } });
       if (currentUser) {
-        return res.status(200).json({ error: 'User with this login already exists' });
+        return res.status(201).json({ error: 'User with this login already exists' });
       }
 
       /* create new user */
